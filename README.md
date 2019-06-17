@@ -28,3 +28,9 @@ rails server
 pg_ctl start
 
 pg_ctl stop
+
+drop
+
+create 
+
+migrate
