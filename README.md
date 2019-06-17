@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+rails server
+
+pg_ctl start
+
+pg_ctl stop
