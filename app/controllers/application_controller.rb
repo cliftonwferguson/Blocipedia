@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     # return the path based on resource
   end
 
-  def after_sign_out_path_for(resource)
-    # return the path based on resource
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
   end
 
 end
