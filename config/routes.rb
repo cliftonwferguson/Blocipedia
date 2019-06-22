@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  root to: 'pages#home'
+  resources :wiki
+  
+  get 'about' => 'welcome#about'
+
+  root to: 'wiki#index'
 
   devise_for :users
   resources  :users, :only => [:index, :show]
