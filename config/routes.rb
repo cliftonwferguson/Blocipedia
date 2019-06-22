@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'wikis/index'
+ resources :wikis
 
-  get 'wikis/show'
-
-  get 'wikis/new'
-
-  get 'wikis/edit'
-
-  root to: 'pages#home'
+  root to: 'wikis#index'
 
   devise_for :users
   resources  :users, :only => [:index, :show]
