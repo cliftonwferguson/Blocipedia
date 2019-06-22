@@ -4,7 +4,7 @@ RSpec.describe WikisController, type: :controller do
   
    
    let(:my_wiki) { Wiki.create!(title: Random.alphanumeric, body: RandomData.random_paragraph) }
-   
+
 
    describe "GET index" do
      it "returns http success" do
