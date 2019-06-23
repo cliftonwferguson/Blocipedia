@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe WikisController, type: :controller do
   
-   
+   let(:my_user) { create(:user, email: "test@email.com", password: "helloworld") }
    let(:my_wiki) { Wiki.create!(title: Random.alphanumeric, body: RandomData.random_paragraph) }
 
 
