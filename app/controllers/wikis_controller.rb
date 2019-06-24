@@ -7,13 +7,31 @@ class WikisController < ApplicationController
   end
 
   def show
-  	 @wikis = Wiki.all
+  	 @wiki = Wiki.find(params[:id])
   end
 
   def new
-  	 @wikis = Wiki.new
+  	 @wiki = Wiki.new
+  end
+  
+  def create
+  	if not @wiki
+  		@wiki = Wiki.new
+  	end
+  	@wiki.user = current_user
+
+  	if @wiki.save
+
+  		flash[:notice] = "wiki was saved."
+  		redirect_to @wiki
+  	else
+
+  		flash.now[:alert] = "There was an error saving the Wiki.  Please try again."
+  		render :new
+  	 end
   end
 
   def edit
+  	 @wiki = Wiki.find(params[:id])
   end
 end
