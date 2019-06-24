@@ -1,10 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe WikisController, type: :controller do
+
+
   
+  
+
+RSpec.describe WikisController, type: :controller do
+   
+   include Devise::Test::IntegrationHelpers
+   
    let(:my_user) { User.create!(email: "test@Mikeipedia.com", password: "helloworld") }
    let(:my_wiki) { Wiki.create!(title: Random.alphanumeric, body: RandomData.random_paragraph, user: my_user) }
-
+    
 
    describe "GET index" do
      it "returns http success" do
@@ -24,6 +31,10 @@ RSpec.describe WikisController, type: :controller do
    #     expect(response).to have_http_status(:success)
    #   end
    # end
+ context "member user doing CRUD on a post they own" do
+   before do
+     sign_in @my_user
+   end
 
    describe "GET new" do
       it "returns http success" do
@@ -41,6 +52,7 @@ RSpec.describe WikisController, type: :controller do
         expect(assigns(:wiki)).not_to be_nil
       end
     end
+   
 
     describe "WIKI create" do
 
@@ -58,6 +70,7 @@ RSpec.describe WikisController, type: :controller do
         expect(response).to redirect_to Wiki.last
       end
     end
+  end
    # # describe "GET edit" do
    #   it "returns http success" do
    #     get :edit
