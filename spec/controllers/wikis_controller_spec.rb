@@ -105,9 +105,30 @@ RSpec.describe WikisController, type: :controller do
         expect(wiki_instance.title).to eq my_wiki.title
         expect(wiki_instance.body).to eq my_wiki.body
       end
-      
+    end
+   
+    describe "PUT update" do
+     it "updates wiki with expected attributes" do
+       new_title = RandomData.random_sentence
+       new_body = RandomData.random_paragraph
+ 
+       put :update, params: {id: my_wiki.id}
+ 
 
-
+       updated_wiki = assigns(:wiki)
+       expect(updated_wiki.id).to eq my_wiki.id
+       expect(updated_wiki.title).to eq new_title
+       expect(updated_wiki.body).to eq new_body
+     end
+ 
+     it "redirects to the updated wiki" do
+       new_title = RandomData.random_sentence
+       new_body = RandomData.random_paragraph
+ 
+ 
+       put :update, params: { id: my_wiki.id, wiki: {title: new_title, body: new_body } }
+       expect(response).to redirect_to my_wiki
+     end
    end
 
   end
