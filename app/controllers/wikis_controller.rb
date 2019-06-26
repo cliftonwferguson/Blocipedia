@@ -1,6 +1,9 @@
 class WikisController < ApplicationController
   
   skip_before_action :authenticate_user!, only: [:index, :show]
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+
 
   def index
     @wikis = Wiki.all
