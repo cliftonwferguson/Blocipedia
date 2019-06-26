@@ -11,17 +11,17 @@ class WikisController < ApplicationController
   end
 
   def new
-  	 @wiki = Wiki.new
+      @wiki = Wiki.new
   end
+
+
   
   def create
-  	if not @wiki
-  		@wiki = Wiki.new
-  	end
+  	@wiki = Wiki.new
   	@wiki.user = current_user
-
+    @wiki.title = params[:wiki][:title]
+    @wiki.body = params[:wiki][:body]
   	if @wiki.save
-
   		flash[:notice] = "wiki was saved."
   		redirect_to @wiki
   	else
