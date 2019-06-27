@@ -8,5 +8,12 @@ class WikiPolicy < ApplicationPolicy
   def show?
   	true
   end
+ 
+  def update?
+    user.present?
+  end
 
+  def edit
+    true
+  end
 end

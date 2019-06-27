@@ -23,11 +23,11 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+     false
   end
 
   def edit?
-    update?
+     update?
   end
 
   def destroy?
