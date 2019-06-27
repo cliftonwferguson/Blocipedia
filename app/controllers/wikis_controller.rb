@@ -1,9 +1,8 @@
 class WikisController < ApplicationController
   
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
-
+  # after_action :verify_policy_scoped, only: :index
 
   def index
     @wikis = Wiki.all
@@ -11,6 +10,7 @@ class WikisController < ApplicationController
 
   def show
   	 @wiki = Wiki.find(params[:id])
+     authorize @wiki
   end
 
   def new
