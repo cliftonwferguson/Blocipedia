@@ -13,7 +13,4 @@ class WikiPolicy < ApplicationPolicy
     user.present?
   end
 
-  def edit
-    true
-  end
 end
