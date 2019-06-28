@@ -52,6 +52,8 @@ source 'https://rubygems.org'
    
  end
 
+  gem 'stripe'
+
   gem 'faker'
  
   gem 'bootstrap-sass'
