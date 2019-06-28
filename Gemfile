@@ -51,6 +51,8 @@ source 'https://rubygems.org'
    gem 'shoulda'
    
  end
+
+  gem 'faker'
  
   gem 'bootstrap-sass'
   

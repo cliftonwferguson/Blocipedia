@@ -13,6 +13,14 @@
   password: "password"
  	)
 
+  10.times do
+    User.create!(
+    	email: Faker::Internet.email,
+    	password: Faker::Internet.password
+
+    	)
+  end	
+   
 
  50.times do
  	Wiki.create!(
@@ -26,5 +34,6 @@
  	 
  	 puts "Seed Finished"
  	 puts "#{Wiki.count} wiki created"
+ 	 puts "#{User.count} users created" 
 
  
