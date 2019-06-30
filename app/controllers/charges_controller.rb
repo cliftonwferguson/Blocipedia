@@ -32,9 +32,7 @@ def create
      redirect_to new_charge_path
  end
 
-   after_initialize do
-    if self.role == :standard
-      self.role ||= :admin
-    end
-  end
+   after_action do
+     current_user.role == :premium
+   end
 end
