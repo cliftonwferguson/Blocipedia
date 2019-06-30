@@ -4,13 +4,17 @@ class WikiPolicy < ApplicationPolicy
       scope.all
     end
   end
-
+  
+  def create?
+    true
+  end
+  
   def show?
   	true
   end
  
   def update?
-    user.present?
+    user.present? && (record.user == user || user.admin? )
   end
 
 end
