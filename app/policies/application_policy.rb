@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    false
+    true
   end
 
   def create?
@@ -19,7 +19,7 @@ class ApplicationPolicy
   end
 
   def new?
-    create?
+    true
   end
 
   def update?
@@ -31,7 +31,9 @@ class ApplicationPolicy
   end
 
   def destroy?
-    true
+    if user == record.user ||  role == 'admin'
+       true
+    end
   end
 
   class Scope
