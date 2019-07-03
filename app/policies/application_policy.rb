@@ -4,7 +4,6 @@ class ApplicationPolicy
   def initialize(user, record, role)
     @user = user
     @record = record
-    @role = role
   end
 
   def index?
