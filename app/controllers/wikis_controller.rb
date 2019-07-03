@@ -14,7 +14,7 @@ class WikisController < ApplicationController
 
   def new
       @wiki = Wiki.new
-      authorize @wiki
+      authorize @wiki, policy_class: ApplicationPolicy
   end
 
 
@@ -24,7 +24,7 @@ class WikisController < ApplicationController
   	@wiki.user = current_user
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    authorize @wiki
+    authorize @wiki, policy_class: ApplicationPolicy
   	if @wiki.save
   		flash[:notice] = "wiki was saved."
   		redirect_to @wiki
@@ -37,14 +37,14 @@ class WikisController < ApplicationController
 
   def edit
   	 @wiki = Wiki.find(params[:id])
-     authorize @wiki
+     authorize @wiki, policy_class: ApplicationPolicy
   end
 
   def update
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    authorize @wiki
+    authorize @wiki, policy_class: ApplicationPolicy
     
     if @wiki.save
     	flash[:notice] = "Wiki was updated."
@@ -57,7 +57,7 @@ class WikisController < ApplicationController
 
   def destroy
   	@wiki = Wiki.find(params[:id])
-    authorize @wiki
+    authorize @wiki, policy_class: ApplicationPolicy
 
   	if @wiki.destroy
   		flash[:notice] = "\"#{@wiki.title}\"was deleted successfully."
