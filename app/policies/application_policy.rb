@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    if user == record.user ||  role == 'admin'
+    if user == record.user ||  user.role == 'admin'
        true
     end
   end
