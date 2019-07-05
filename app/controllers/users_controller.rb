@@ -41,6 +41,8 @@ class UsersController < ApplicationController
     	render :edit
     end
 
+       return redirect_to '/users/change-role'
+
 
     end
 
