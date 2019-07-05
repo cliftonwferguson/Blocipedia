@@ -8,6 +8,10 @@ def new
    }
  end
 
+ def destroy
+  puts "destroy charge"
+ end
+
 def create
    
    customer = Stripe::Customer.create(
@@ -23,6 +27,8 @@ def create
      currency: 'usd'
    )
  
+    current_user.update_attribute("role", "premium") 
+
    flash[:notice] = "Thanks for upgrading, #{current_user.email}! Enjoy the premium content."
    redirect_to user_path(current_user) # or wherever
  
