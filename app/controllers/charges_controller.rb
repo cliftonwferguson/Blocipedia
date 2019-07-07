@@ -9,7 +9,15 @@ def new
  end
 
  def destroy
-  puts "destroy charge"
+  current_user.downgrade("role", "standard") 
+
+  flash[:notice] = "You have now been downgraded to a standard membership."
+  redirect_to user_path(current_user)
+  
+  after_action do
+    current_user.role == :standard
+  end
+  
  end
 
 def create
