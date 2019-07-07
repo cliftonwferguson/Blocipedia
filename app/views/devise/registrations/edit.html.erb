@@ -45,13 +45,13 @@
 
 <% if resource.role === "premium" %>
 <h3> Downgrade my account to standard </h3>
-<%= button_to "Downgrate to standard", charge_path(:destroy) %>
+<%= button_to "Downgrate to standard", charge_path(:destroy), :method => :delete %>
 <% end %>
 
 <% if resource.role === "admin" %>
 <h3> Toggle user role </h3>
 
-<%= button_to "Toggle Role", users_change_role_path %>
+<%= button_to "Toggle Role", [method => :delete], users_change_role_path %>
 <% end %>
 
 
