@@ -9,6 +9,11 @@ def new
  end
 
  def destroy
+  customer = Stripe::Customer.delete(
+     email: current_user.email,
+     card: params[:stripeToken]
+   )
+
   current_user.update(role: "standard") 
   current_user.role == :standard
   flash[:notice] = "You have now been downgraded to a standard membership."
@@ -42,7 +47,5 @@ def create
      redirect_to new_charge_path
  end
 
-   after_action do
-     current_user.role == :premium
-   end
+  
 end
