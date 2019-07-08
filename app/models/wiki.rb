@@ -1,4 +1,4 @@
 class Wiki < ApplicationRecord
   belongs_to :user
-  default_scope { where(private: true) }
+  scope :published, -> { where(private: false) }
 end

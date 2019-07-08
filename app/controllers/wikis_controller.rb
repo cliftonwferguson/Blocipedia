@@ -5,8 +5,8 @@ class WikisController < ApplicationController
   # after_action :verify_policy_scoped, only: :index
 
   def index
-    @wikis = Wiki.all
-    @wikis = Wiki.private
+  ##  @wikis = Wiki.all
+    @wikis = Wiki.published
   end
 
   def show
@@ -25,6 +25,7 @@ class WikisController < ApplicationController
   	@wiki.user = current_user
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
     authorize @wiki, policy_class: ApplicationPolicy
   	if @wiki.save
   		flash[:notice] = "wiki was saved."
