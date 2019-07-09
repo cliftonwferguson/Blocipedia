@@ -5,7 +5,8 @@ class WikisController < ApplicationController
   # after_action :verify_policy_scoped, only: :index
 
   def index
-    if current_user
+  
+    if current_user && current_user.role == "premium"
        @wikis = Wiki.all 
     else
       @wikis = Wiki.all.select { |wiki| wiki.private == false }
