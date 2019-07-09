@@ -5,9 +5,13 @@ class WikisController < ApplicationController
   # after_action :verify_policy_scoped, only: :index
 
   def index
-  ##  @wikis = Wiki.all
-    @wikis = Wiki.published
+    if current_user
+       @wikis = Wiki.all 
+    else
+      @wikis = Wiki.all.select { |wiki| wiki.private == false }
+    end
   end
+    
 
   def show
   	 @wiki = Wiki.find(params[:id])
