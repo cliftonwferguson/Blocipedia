@@ -9,11 +9,13 @@ def new
  end
 
  def destroy
-  current_user.update(role: "standard") 
+  current_user.wiki.each do |wiki|
+    wiki = wiki.public
+  end 
+  current_user.update(role: "standard")
   current_user.role == :standard
   flash[:notice] = "You have now been downgraded to a standard membership."
   redirect_to user_path(current_user)
-  
  end
 
 def create
