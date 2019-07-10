@@ -9,8 +9,8 @@ def new
  end
 
  def destroy
-  current_user.wiki.each do |wiki|
-    wiki = wiki.public
+  current_user.wikis.each do |wiki|
+     wiki.update(private: "false")
   end 
   current_user.update(role: "standard")
   current_user.role == :standard
