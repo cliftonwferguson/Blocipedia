@@ -52,6 +52,8 @@ source 'https://rubygems.org'
    
  end
 
+  gem 'redcarpet'
+
   gem 'stripe'
 
   gem 'faker'
