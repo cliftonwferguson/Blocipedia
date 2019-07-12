@@ -9,7 +9,7 @@ class WikisController < ApplicationController
     if current_user && current_user.role == "premium"
        @wikis = Wiki.all 
     else
-      @wikis = Wiki.all.select { |wiki| wiki.private == false || "nil" }
+      @wikis = Wiki.all.select { |wiki| wiki.private == false }
     end
   end
     
@@ -30,7 +30,8 @@ class WikisController < ApplicationController
   	@wiki.user = current_user
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    @wiki.private = params[:wiki][:private]
+    @wiki.private = params[:wiki][:private] || false
+    p @wiki
     authorize @wiki, policy_class: ApplicationPolicy
   	if @wiki.save
   		flash[:notice] = "wiki was saved."
