@@ -9,7 +9,7 @@ class WikisController < ApplicationController
     if current_user && current_user.role == "premium"
        @wikis = Wiki.all 
     else
-      @wikis = Wiki.all.select { |wiki| wiki.private == false }
+      @wikis = Wiki.all.select { |wiki| wiki.private == false || "nil" }
     end
   end
     
