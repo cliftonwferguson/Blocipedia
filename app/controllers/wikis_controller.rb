@@ -7,7 +7,7 @@ class WikisController < ApplicationController
   def index
   
     if current_user && current_user.role == "premium"
-       @wikis = Wiki.all 
+      @wikis = policy_scope(Wiki)
     else
       @wikis = Wiki.all.select { |wiki| wiki.private == false }
     end
