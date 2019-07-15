@@ -53,7 +53,18 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     authorize @wiki, policy_class: ApplicationPolicy
-    
+    if params [:wiki][:email].length >0
+      # look up the user that owns the emai, 
+      user = User.find_by(email: params[:wiki][:email])
+      # find a collaborator that has that user and this wiki
+      collaborator = PrivateWikiCollaborators.find_by(user: user, wiki: @wiki)
+      # if the collaborator doesn't exit, create it. 
+        if collaborator == nil
+          PrivateWikiCollaborators.create(user: user, wiki: @wiki)
+        end
+    end
+
+
     if @wiki.save
     	flash[:notice] = "Wiki was updated."
     	redirect_to @wiki

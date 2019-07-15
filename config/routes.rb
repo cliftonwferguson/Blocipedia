@@ -6,6 +6,8 @@ post 'users/change-role', to: 'users#update_role'
 
  resources :wikis
 
+ resources :private_wiki_collaborators
+
  resources :charges, only: [:new, :create, :destroy]
 
   root to: 'wikis#index'
