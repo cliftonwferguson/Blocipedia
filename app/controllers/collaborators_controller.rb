@@ -4,7 +4,7 @@ class CollaboratorsController < ApplicationController
   	  @collaborator.user = User.find_by(email: params[:collaborator][:user])
   	  @collaborator.wiki = params[:collaborator][:wiki]
   	  p @collaborator
-  	  if @collaborator.save
+  	if @collaborator.save
   		flash[:notice] = "collaborator was saved."
   		redirect_to params[:collaborator][:wiki]
   	else
