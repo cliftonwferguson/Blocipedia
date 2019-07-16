@@ -1,6 +1,6 @@
-class PrivateWikiCollaboratorsController < ApplicationController
+class CollaboratorsController < ApplicationController
 	def new
-	  @collaborator = collaborator.new
+	  @collaborator = Collaborator.new
   	  @collaborator.user = User.find_by(email: params[:collaborator][:user])
   	  @collaborator.wiki = params[:collaborator][:wiki]
   	  p @collaborator
