@@ -20,7 +20,7 @@
          <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
        </div>
        <div class="form-group">
-        <%= link_to "Add Collaborator", new_private_wiki_collaborator_path, :data => {:wiki => @wiki} %>
+        <%= link_to "Add Collaborator", new_collaborator_path, :data => {:wiki => @wiki} %>
        </div>
        <div class="form-group">
          <%= f.submit "Save", class: 'btn btn-success' %>
