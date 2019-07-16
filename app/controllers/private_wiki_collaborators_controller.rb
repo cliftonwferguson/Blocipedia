@@ -1,5 +1,5 @@
 class PrivateWikiCollaboratorsController < ApplicationController
-	def create
+	def new
 	  @collaborator = collaborator.new
   	  @collaborator.user = User.find_by(email: params[:collaborator][:user])
   	  @collaborator.wiki = params[:collaborator][:wiki]
