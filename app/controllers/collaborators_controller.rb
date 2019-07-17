@@ -1,5 +1,5 @@
 class CollaboratorsController < ApplicationController
-	def new
+	def create
 	  @collaborator = Collaborator.new
   	  @collaborator.user = User.find_by(email: params[:collaborator][:user])
   	  @collaborator.wiki = params[:collaborator][:wiki]
