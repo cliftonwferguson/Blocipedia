@@ -20,6 +20,4 @@ class CollaboratorsController < ApplicationController
       @wiki = Wiki.find(params[:wiki_id])
       p @wiki
     end
-
-
 end
