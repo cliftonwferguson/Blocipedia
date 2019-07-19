@@ -6,7 +6,9 @@ post 'users/change-role', to: 'users#update_role'
 
  resources :wikis
 
- resources :collaborators
+ resources :wikis do
+ 	resources :collaborators
+ end
 
  resources :charges, only: [:new, :create, :destroy]
 

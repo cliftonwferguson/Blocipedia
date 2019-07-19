@@ -9,7 +9,9 @@ class WikisController < ApplicationController
     if current_user && current_user.role == "premium"
       @wikis = policy_scope(Wiki)
     else
-      @wikis = Wiki.all.select { |wiki| wiki.private == false }
+      @wikis = Wiki.all.select { |wiki| 
+        wiki.private == false || !Collaborator.find_by(user: current_user, wiki: wiki).nil?
+      }
     end
   end
     
@@ -23,7 +25,10 @@ class WikisController < ApplicationController
       authorize @wiki, policy_class: ApplicationPolicy
   end
 
-
+  # def new_wiki_collaborator
+  #   @wiki = Wiki.find(params[:id])
+  #   p @wiki
+  # end
   
   def create
   	@wiki = Wiki.new

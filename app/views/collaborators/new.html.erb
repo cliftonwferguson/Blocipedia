@@ -1,7 +1,7 @@
- <%= form_for @collaborator do |f| %>
+
+ <%= form_for ([@wiki, @collaborator]) do |f| %>
    <div class="form-group">
      <%= f.label :user %>
      <%= f.text_field :user, class: 'form-control', placeholder: "Enter User Email", as: :fake %>
    </div>
-<%= f.hidden_field wiki, :wiki %>
  <% end %>
