@@ -21,6 +21,12 @@
        </div>
        <% if @wiki.user == current_user %>
        <div class="form-group">
+         <% @wiki.collaborators.each { |collaborator| %>
+           <%= collaborator.user.email %> <%= link_to "Remove Collaborator",  post, wiki_collaborator_path(@wiki.id, collaborator.id), method: :delete, :data => {:id => collaborator.id} %>
+           <br>
+         <% }%>
+       </div>
+       <div class="form-group">
          <%= link_to "Add Collaborator", new_wiki_collaborator_path(@wiki), :data => {:wiki => @wiki} %>
        </div>
        <% end %>
