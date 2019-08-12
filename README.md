@@ -19,18 +19,6 @@ Things you may want to cover:
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
 
-rails server
 
-pg_ctl start
-
-pg_ctl stop
-
-drop
-
-create 
-
-migrate
